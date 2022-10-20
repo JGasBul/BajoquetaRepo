@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">bajoquetaApp</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="registrar">Registrar</string>
+    <string name="acceder">Acceder</string>
+    <string name="cerrar_sesi_n">Cerrar Sesión</string>
+    <string name="fui_default_toolbar_title">Tipo de Autentificación</string>
+    <string name="fui_sign_in_with_email">Entra con tu correo</string>
+    <string name="fui_progress_dialog_signing_up">Creando cuenta...</string>
+    <string name="logo_smartcook">logo_smartcook</string>
+    <string name="elige_tu_inicio_de_sesion">Elige tu inicio de sesion:</string>
+    <string name="inicia_sesi_n_con_correo_electronico">Inicia sesión con correo electronico</string>
+    <string name="inicia_sesi_n_con_google">Inicia sesión con google</string>
+    <string name="que_te_apetece_cocinar_hoy">¿Que te apetece cocinar hoy?</string>
+    <string name="bienvenido_usuario">Bienvenido Usuario</string>
+    <string name="bienvenido">Bienvenido </string>
+</resources>
