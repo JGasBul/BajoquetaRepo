@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "161114920811",
+    "project_id": "bajoquetaapp",
+    "storage_bucket": "bajoquetaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161114920811:android:a2b9ed9d55bf2b7d341e2e",
+        "android_client_info": {
+          "package_name": "com.example.bajoquetaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161114920811-t12r55pnir6776bcd1h9i0ia579nnou7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0QFWLz4vRboCZc5lZsfEwKAl8BcLtdx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161114920811-t12r55pnir6776bcd1h9i0ia579nnou7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
