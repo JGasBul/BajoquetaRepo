@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 public class welcomeActivity extends AppCompatActivity {
-private static final int SPLASH_TIME_OUT = 4000;
+private static final int SPLASH_TIME_OUT = 1500;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
