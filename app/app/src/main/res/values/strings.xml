@@ -12,4 +12,7 @@
     <string name="elige_tu_inicio_de_sesion">Elige tu inicio de sesion:</string>
     <string name="inicia_sesi_n_con_correo_electronico">Inicia sesión con correo electronico</string>
     <string name="inicia_sesi_n_con_google">Inicia sesión con google</string>
+    <string name="que_te_apetece_cocinar_hoy">¿Que te apetece cocinar hoy?</string>
+    <string name="bienvenido_usuario">Bienvenido Usuario</string>
+    <string name="bienvenido">Bienvenido </string>
 </resources>
