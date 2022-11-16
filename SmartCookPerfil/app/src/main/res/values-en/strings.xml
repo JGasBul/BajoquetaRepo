@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SmartCook - Perfil</string>
+    <string name="app_perfil_resumeTitle">Weekly resume</string>
+    <string name="app_perfil_preparedRecipeTitle">Prepared recipes</string>
+    <string name="app_perfil_recipeNumber">Recipe number</string>
+    <string name="app_perfil_welcomeTitle">Good morning</string>
+</resources>
