@@ -14,21 +14,24 @@
         android:theme="@style/Theme.BajoquetaApp"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main" />
+        <activity
             android:name=".welcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".homeActivity"
-            android:exported="false"
-            />
+            android:name=".oldHomeActivity"
+            android:exported="false" />
         <activity
             android:name=".authActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -117,7 +117,7 @@ public class authActivity extends AppCompatActivity {
         if (user != null) {
             Toast.makeText(this, "Iniciada sesion: " + user.getDisplayName() +
                     " - " + user.getEmail(), Toast.LENGTH_LONG).show();
-            Intent i = new Intent(this, homeActivity.class);
+            Intent i = new Intent(this, MainActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                     | Intent.FLAG_ACTIVITY_NEW_TASK
                     | Intent.FLAG_ACTIVITY_CLEAR_TASK);

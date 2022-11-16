@@ -15,4 +15,8 @@
     <string name="que_te_apetece_cocinar_hoy">¿Que te apetece cocinar hoy?</string>
     <string name="bienvenido_usuario">Bienvenido Usuario</string>
     <string name="bienvenido">Bienvenido </string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
