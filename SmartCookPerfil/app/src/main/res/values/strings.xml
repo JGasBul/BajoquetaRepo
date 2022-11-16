@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SmartCook - Perfil</string>
+    <string name="app_perfil_resumeTitle">Resumen Semanal</string>
+    <string name="app_perfil_preparedRecipeTitle">Recetas preparadas</string>
+    <string name="app_perfil_recipeNumber">Receta número</string>
+    <string name="app_perfil_welcomeTitle">Buenos días</string>
+</resources>
