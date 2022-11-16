@@ -1,4 +1,4 @@
-package com.example.bajoquetaapp.ui.dashboard;
+package com.example.bajoquetaapp.ui.user;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
