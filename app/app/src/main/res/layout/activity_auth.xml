@@ -6,43 +6,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".authActivity" >
+    tools:context=".authActivity">
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="266dp"
+        android:layout_height="207dp"
         android:contentDescription="@string/logo_smartcook"
         app:srcCompat="@mipmap/logo_smartcook_foreground" />
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_correo"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="?android:attr/actionBarSize"
+            android:transitionGroup="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/correo"
+                style="@style/Theme.BajoquetaApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:hint="Correo electrónico"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textSize="14dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_contraseña"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="?android:attr/actionBarSize"
+            android:transitionGroup="true"
+            app:layout_constraintEnd_toEndOf="@+id/til_correo"
+            app:layout_constraintStart_toStartOf="@+id/til_correo"
+            app:layout_constraintTop_toBottomOf="@+id/til_correo">
+
+            <EditText
+                android:id="@+id/contraseña"
+                style="@style/Theme.BajoquetaApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:hint="Contraseña"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:textSize="14dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/inicio_sesión"
+            style="@style/Theme.BajoquetaApp"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#72A874"
+            android:text="Login"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/til_contraseña"
+            app:layout_constraintStart_toStartOf="@+id/til_contraseña"
+            app:layout_constraintTop_toBottomOf="@+id/registro" />
+
+        <Button
+            android:id="@+id/registro"
+            android:layout_width="125dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="15dp"
+            android:background="#00FFFFFF"
+            android:backgroundTint="#00FFFFFF"
+            android:text="Créala aquí"
+            android:textColor="#97BD7204"
+            android:textSize="12sp"
+            android:textStyle="normal|bold"
+            app:layout_constraintEnd_toEndOf="@+id/til_contraseña"
+            app:layout_constraintTop_toBottomOf="@+id/til_contraseña" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="350dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6">
-
-            <Button
-                android:id="@+id/registerButton"
-                style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginBottom="12dp"
-                android:text="@string/inicia_sesi_n_con_correo_electronico" />
+            app:layout_constraintTop_toBottomOf="@+id/inicio_sesión">
 
             <Button
                 android:id="@+id/googleButton"
@@ -54,7 +117,9 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="25dp"
-                android:text="@string/inicia_sesi_n_con_google" />
+                android:text="@string/inicia_sesi_n_con_google"
+                android:textColor="#000000"
+                app:cornerRadius="15dp" />
 
             <Button
                 android:id="@+id/phoneButton"
@@ -66,9 +131,26 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="25dp"
-                android:text="Inicia sesión con numero de telefono" />
+                android:text="Inicia sesión con numero de telefono"
+                android:textColor="#000000"
+                app:cornerRadius="15dp" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#00FFFFFF"
+            android:text="¿No tienes cuenta?"
+            android:textColor="#E63C3C3C"
+            android:textSize="16sp"
+            android:textStyle="normal|bold"
+            app:layout_constraintEnd_toStartOf="@+id/registro"
+            app:layout_constraintStart_toStartOf="@+id/til_contraseña"
+            app:layout_constraintTop_toTopOf="@+id/registro" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
