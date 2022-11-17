@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.bajoquetaapp.ui.home.HomeFragment"
+        android:name="com.example.bajoquetaapp.ui.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_user"
-        android:name="com.example.bajoquetaapp.ui.user.UserFragment"
-        android:label="@string/title_dashboard"
+        android:name="com.example.bajoquetaapp.ui.UserFragment"
+        android:label="@string/title_user"
         tools:layout="@layout/fragment_user" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.bajoquetaapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_recipes"
+        android:name="com.example.bajoquetaapp.ui.RecipesFragment"
+        android:label="@string/title_recipes"
+        tools:layout="@layout/fragment_recipes" />
 </navigation>
