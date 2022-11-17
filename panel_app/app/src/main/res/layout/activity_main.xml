@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="480dp"
+        android:layout_height="65dp"
+
+        android:layout_marginStart="-20dp"
+
+
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_all_rounded"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="105dp"
+        android:text="PESO DEL ALIMENTO"
+        android:textAlignment="textEnd"
+        android:textColor="#353535"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/peso"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="-20dp"
+
+
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_all_rounded"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:gravity="center"
+        android:paddingLeft="30dp"
+        android:paddingRight="15dp"
+        android:text="859 g"
+        android:textAlignment="center"
+        android:textColor="#353535"
+        android:textSize="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="61dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="-80dp"
+        android:elevation="40dp"
+        android:rotation="8"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:srcCompat="@drawable/escala" />
+
+    <ImageView
+
+        android:id="@+id/FoodCont"
+        android:layout_width="571dp"
+        android:layout_height="356dp"
+        android:layout_marginStart="-20dp"
+        android:background="@drawable/shape_all_rounded"
+        android:elevation="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/peso"
+        app:srcCompat="@drawable/shape_all_rounded" />
+
+    <ImageView
+
+        android:id="@+id/foodCont"
+        android:layout_width="571dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="-20dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/shape_all_rounded"
+        android:elevation="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/shape_all_rounded" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Proteinas"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/foodCont"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Ensalada de la Huerta"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Ensalada Marinada"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/preotein"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="50g"
+        android:textColor="#E78686"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.437" />
+
+    <ProgressBar
+        android:id="@+id/progressBar4"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:elevation="40dp"
+        android:indeterminate="false"
+        android:progress="75"
+        android:progressBackgroundTint="#878686"
+        android:progressTint="#E78686"
+        android:progressTintMode="src_atop"
+        android:scaleY="4"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/preotein"
+        app:layout_constraintTop_toTopOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Grasas"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/foodCont"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:elevation="40dp"
+        android:indeterminate="false"
+        android:progress="50"
+        android:progressBackgroundTint="#878686"
+        android:progressTint="#F7DE42"
+        android:progressTintMode="src_atop"
+        android:scaleY="4"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/grease"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/grease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="14g"
+        android:textColor="#F7DE42"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.437" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Hidratos"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/foodCont"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/hidrates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="5g"
+        android:textColor="#BBD3FF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.687" />
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:elevation="40dp"
+        android:indeterminate="false"
+        android:progress="20"
+        android:progressBackgroundTint="#878686"
+        android:progressTint="#BBD3FF"
+        android:progressTintMode="src_atop"
+        android:scaleY="4"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/hidrates"
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="TOMATE"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/FoodCont"
+        app:layout_constraintEnd_toEndOf="@+id/FoodCont"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="VALOR NUTRICIONAL"
+        android:textColor="#353535"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="@+id/foodCont"
+        app:layout_constraintTop_toTopOf="@+id/foodCont" />
+
+    <TextView
+
+        android:id="@+id/textView8"
+        android:layout_width="547dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:paddingLeft="5dp"
+        android:text="RECETAS"
+        android:textAlignment="center"
+        android:textColor="#353535"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="@+id/foodCont"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:elevation="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/FoodCont"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/FoodCont"
+        app:srcCompat="@drawable/demo_tomato" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Calorías"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/foodCont"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="75kcal"
+        android:textColor="#62AE65"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:elevation="40dp"
+        android:indeterminate="false"
+        android:progress="50"
+        android:progressBackgroundTint="#878686"
+        android:progressTint="#62AE65"
+        android:progressTintMode="src_atop"
+        android:scaleY="4"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/calories"
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="226dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:elevation="40dp"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:srcCompat="@drawable/demo_salad" />
+
+    <ImageView
+
+        android:id="@+id/imageView3"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:srcCompat="@drawable/demo_salad_2" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="61dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:elevation="40dp"
+        app:layout_constraintEnd_toEndOf="@+id/FoodCont"
+        app:layout_constraintTop_toTopOf="@+id/FoodCont"
+        app:srcCompat="@drawable/ai"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
