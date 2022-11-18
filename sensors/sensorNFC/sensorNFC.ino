@@ -4,6 +4,9 @@
 
 #define RST_PIN  22      // constant to reference reset pin
 #define SS_PIN  5      // constant to reference slave select pin
+//Pines leds
+
+
 
 MFRC522 mfrc522(SS_PIN, RST_PIN); // creates mfrc522 object sending slave select and reset pins
 
@@ -16,7 +19,10 @@ void setup() {
   M5.lcd.setTextSize(2.5);
   SPI.begin();        // initialises SPI bus
   mfrc522.PCD_Init();     // initialise reader module
-  Serial.println("Listo");    
+  Serial.println("Listo");   
+  //pinMode(ledVerde,OUTPUT);// pin modes
+  //pinMode(ledRojo,OUTPUT);
+   
 }
 
 void loop() {
@@ -40,8 +46,10 @@ void loop() {
 
   Serial.print("\t");         
 
-  if (comparaUID(LecturaUID, Usuario1))   // call function compareUID with User1
+  if (comparaUID(LecturaUID, Usuario1)){   // call function compareUID with User1
     M5.Lcd.print("Bienvenido Arnau \n");// if it returns true it displays welcome text
+    
+  }
   else if (comparaUID(LecturaUID, Usuario2)) // call function compareUID with User2
     M5.Lcd.print("Bienvenido Zaida \n"); // if it returns true it displays welcome text
   else           // if false
