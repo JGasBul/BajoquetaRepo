@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/peso"
+        android:id="@+id/subText"
         android:layout_width="375dp"
         android:layout_height="wrap_content"
 
@@ -42,9 +42,10 @@
         android:elevation="40dp"
         android:fontFamily="@font/montserrat_semibold"
         android:gravity="center"
+        android:onClick="published"
         android:paddingLeft="30dp"
         android:paddingRight="15dp"
-        android:text="859 g"
+        android:text="No Data"
         android:textAlignment="center"
         android:textColor="#353535"
         android:textSize="60sp"
@@ -57,6 +58,7 @@
         android:layout_height="46dp"
         android:layout_marginStart="-80dp"
         android:elevation="40dp"
+        android:onClick="conn"
         android:rotation="8"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -73,7 +75,7 @@
         android:elevation="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/peso"
+        app:layout_constraintTop_toBottomOf="@+id/subText"
         app:srcCompat="@drawable/shape_all_rounded" />
 
     <ImageView
@@ -319,6 +321,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:elevation="40dp"
+        android:onClick="lejos"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="@+id/FoodCont"
         app:layout_constraintStart_toStartOf="parent"
@@ -405,9 +408,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:elevation="40dp"
+        android:onClick="disconn"
         app:layout_constraintEnd_toEndOf="@+id/FoodCont"
         app:layout_constraintTop_toTopOf="@+id/FoodCont"
-        app:srcCompat="@drawable/ai"
-        />
+        app:srcCompat="@drawable/ai" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
