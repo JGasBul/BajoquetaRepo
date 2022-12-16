@@ -14,6 +14,15 @@ byte LecturaUID[4];         // creates array to store the read UID
 byte Usuario1[4] = {0xD0, 0x20, 0xD7, 0x25} ;   // Card UID
 byte Usuario2[4] = {0x16 , 0x33, 0x63, 0xD3} ;   // Card UID
 
+boolean comparaUID(byte lectura[], byte usuario[]) // function compareUID
+{
+  for (byte i = 0; i < mfrc522.uid.size; i++) { // loop traverses one byte at a time through the UID
+    if (lectura[i] != usuario[i])       // if byte of UID read is different from user
+      return (false);         // returns false
+  }
+  return (true);          // if all 4 bytes match returns true
+}
+
 void setup() {
   M5.begin(); // initialises M5Stack
   M5.lcd.setTextSize(2.5);
@@ -56,13 +65,4 @@ void loop() {
     M5.Lcd.print("No te conozco \n");    // shows text equivalent to access denied
 
   mfrc522.PICC_HaltA();     // stops card communication
-}
-
-boolean comparaUID(byte lectura[], byte usuario[]) // function compareUID
-{
-  for (byte i = 0; i < mfrc522.uid.size; i++) { // loop traverses one byte at a time through the UID
-    if (lectura[i] != usuario[i])       // if byte of UID read is different from user
-      return (false);         // returns false
-  }
-  return (true);          // if all 4 bytes match returns true
 }
