@@ -290,7 +290,7 @@
             app:layout_constraintVertical_bias="0.666" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/hidratosTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -303,7 +303,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView17" />
 
         <ProgressBar
-            android:id="@+id/progressBar8"
+            android:id="@+id/barraGrasas"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
@@ -325,12 +325,12 @@
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/textView5"
             app:layout_constraintEnd_toStartOf="@+id/textView5"
-            app:layout_constraintStart_toEndOf="@+id/textView16"
+            app:layout_constraintStart_toEndOf="@+id/hidratosTextView"
             app:layout_constraintTop_toTopOf="@+id/textView5"
             app:layout_constraintVertical_bias="0.0" />
 
         <ProgressBar
-            android:id="@+id/progressBar9"
+            android:id="@+id/barraProteinas"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
@@ -343,7 +343,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
         <ProgressBar
-            android:id="@+id/progressBar10"
+            android:id="@+id/barraHidratos"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
@@ -351,12 +351,12 @@
             android:max="100"
             android:progress="75"
             android:progressTint="#5EACDC"
-            app:layout_constraintEnd_toEndOf="@+id/textView16"
-            app:layout_constraintStart_toStartOf="@+id/textView16"
-            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+            app:layout_constraintEnd_toEndOf="@+id/hidratosTextView"
+            app:layout_constraintStart_toStartOf="@+id/hidratosTextView"
+            app:layout_constraintTop_toBottomOf="@+id/hidratosTextView" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/hidratosPorcentaje"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="35dp"
@@ -364,9 +364,9 @@
             android:text="52g / 125g"
             android:textColor="#000000"
             android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@+id/progressBar10"
-            app:layout_constraintStart_toStartOf="@+id/progressBar10"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar10" />
+            app:layout_constraintEnd_toEndOf="@+id/barraHidratos"
+            app:layout_constraintStart_toStartOf="@+id/barraHidratos"
+            app:layout_constraintTop_toBottomOf="@+id/barraHidratos" />
 
         <TextView
             android:id="@+id/textView19"
@@ -378,9 +378,9 @@
             android:text="54g / 100g"
             android:textColor="#000000"
             android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@+id/progressBar9"
-            app:layout_constraintStart_toStartOf="@+id/progressBar9"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar9" />
+            app:layout_constraintEnd_toEndOf="@+id/barraProteinas"
+            app:layout_constraintStart_toStartOf="@+id/barraProteinas"
+            app:layout_constraintTop_toBottomOf="@+id/barraProteinas" />
 
         <TextView
             android:id="@+id/textView20"
@@ -391,9 +391,9 @@
             android:text="20g / 125g"
             android:textColor="#000000"
             android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@+id/progressBar8"
-            app:layout_constraintStart_toStartOf="@+id/progressBar8"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar8" />
+            app:layout_constraintEnd_toEndOf="@+id/barraGrasas"
+            app:layout_constraintStart_toStartOf="@+id/barraGrasas"
+            app:layout_constraintTop_toBottomOf="@+id/barraGrasas" />
 
         <TextView
             android:id="@+id/textView21"
@@ -405,7 +405,7 @@
             android:fontFamily="@font/montserrat_italic"
             android:text="¡ Lo estás haciendo genial !"
             android:textColor="#000000"
-            app:layout_constraintStart_toStartOf="@+id/progressBar10"
+            app:layout_constraintStart_toStartOf="@+id/barraHidratos"
             app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
         <ImageView
@@ -415,7 +415,7 @@
             android:layout_marginTop="20dp"
             android:elevation="35dp"
             android:onClick="rodar"
-            app:layout_constraintEnd_toEndOf="@+id/progressBar8"
+            app:layout_constraintEnd_toEndOf="@+id/barraGrasas"
             app:layout_constraintHorizontal_bias="0.166"
             app:layout_constraintStart_toEndOf="@+id/textView21"
             app:layout_constraintTop_toBottomOf="@+id/textView20"

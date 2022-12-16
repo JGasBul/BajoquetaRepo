@@ -96,10 +96,14 @@ public class authActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.inicio_sesión:
-                signIn(etCorreo.getText().toString(), etContraseña.getText().toString());
+                if (verificaCampos()){
+                    signIn(etCorreo.getText().toString(), etContraseña.getText().toString());
+                }
                 break;
             case R.id.registro:
-                createAccount(etCorreo.getText().toString(), etContraseña.getText().toString());
+                if (verificaCampos()){
+                    createAccount(etCorreo.getText().toString(), etContraseña.getText().toString());
+                }
                 break;
         }
     }

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RecipesDetails">
+
+
+    <TextView
+        android:id="@+id/nombreReceta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoSizeTextType="none"
+        android:background="@drawable/shape_right_rounded"
+        android:elevation="35dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="@string/recetario"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="o" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombreReceta">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="185dp"
+            android:layout_height="181dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/hidratosTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Hidratos"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+        <ProgressBar
+            android:id="@+id/barraHidratos"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:max="100"
+            android:progress="75"
+            android:progressTint="#5EACDC"
+            app:layout_constraintEnd_toEndOf="@+id/hidratosTextView"
+            app:layout_constraintStart_toStartOf="@+id/hidratosTextView"
+            app:layout_constraintTop_toBottomOf="@+id/hidratosTextView" />
+
+        <TextView
+            android:id="@+id/hidratosPorcentaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="52g / 125g"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/barraHidratos"
+            app:layout_constraintStart_toStartOf="@+id/barraHidratos"
+            app:layout_constraintTop_toBottomOf="@+id/barraHidratos" />
+
+        <ProgressBar
+            android:id="@+id/barraProteinas"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:max="100"
+            android:progress="54"
+            android:progressTint="#E78686"
+            app:layout_constraintEnd_toEndOf="@+id/proteinasTextView"
+            app:layout_constraintHorizontal_bias="0.518"
+            app:layout_constraintStart_toStartOf="@+id/proteinasTextView"
+            app:layout_constraintTop_toBottomOf="@+id/proteinasTextView" />
+
+        <TextView
+            android:id="@+id/proteinasTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Proteínas"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/hidratosPorcentaje" />
+
+        <TextView
+            android:id="@+id/proteinasPorcentaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="52g / 125g"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/barraProteinas"
+            app:layout_constraintStart_toStartOf="@+id/barraProteinas"
+            app:layout_constraintTop_toBottomOf="@+id/barraProteinas" />
+
+
+        <TextView
+            android:id="@+id/grasasPorcentaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="52g / 125g"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/barraGrasas"
+            app:layout_constraintStart_toStartOf="@+id/barraGrasas"
+            app:layout_constraintTop_toBottomOf="@+id/barraGrasas" />
+
+        <ProgressBar
+            android:id="@+id/barraGrasas"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:max="100"
+            android:progress="30"
+            android:progressTint="#F7DE42"
+            app:layout_constraintEnd_toEndOf="@+id/grasasTextView"
+            app:layout_constraintStart_toStartOf="@+id/grasasTextView"
+            app:layout_constraintTop_toBottomOf="@+id/grasasTextView" />
+
+        <ProgressBar
+            android:id="@+id/progressBar7"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="69dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="8dp"
+            android:elevation="35dp"
+            android:max="100"
+            android:progress="30"
+            android:progressTint="#F7DE42"
+            app:layout_constraintEnd_toEndOf="@+id/imageView3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <TextView
+            android:id="@+id/grasasTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Grasas"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/proteinasPorcentaje" />
+
+
+        <TextView
+            android:id="@+id/CaloriasTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:text="150Kcal"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar7"
+            app:layout_constraintStart_toEndOf="@+id/progressBar7"
+            app:layout_constraintTop_toTopOf="@+id/progressBar7" />
+
+        <TextView
+            android:id="@+id/personasTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:text="10"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar7"
+            app:layout_constraintStart_toEndOf="@+id/CaloriasTextView"
+            app:layout_constraintTop_toTopOf="@+id/progressBar7" />
+
+        <TextView
+            android:id="@+id/tiempoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:text="45min
+    "
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar7"
+            app:layout_constraintStart_toEndOf="@+id/personasTextView"
+            app:layout_constraintTop_toTopOf="@+id/progressBar7" />
+
+        <TextView
+            android:id="@+id/resumenTextView"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/customborder"
+            android:scrollbars="vertical"
+            android:text="Resumen de la receta"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/personasTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/ingredientes"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_right_rounded"
+        android:elevation="35dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="Ingredientes"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <TextView
+        android:id="@+id/ingredientesTextView2"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_right_rounded"
+        android:elevation="35dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="Preparación"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingredientesTextView" />
+
+    <TextView
+        android:id="@+id/ingredientesTextView"
+        android:layout_width="0dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/customborder"
+        android:scrollbars="vertical"
+        android:text="Resumen de la ingredientes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingredientes" />
+
+    <TextView
+        android:id="@+id/preparacionTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/customborder"
+        android:scrollbars="vertical"
+        android:text="Resumen de la pasos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingredientesTextView2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
