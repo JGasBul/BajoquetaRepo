@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.bajoquetaapp">
+    xmlns:tools="http://schemas.android.com/tools" >
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -14,17 +14,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BajoquetaApp"
-        tools:targetApi="31">
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCHINoKMDnH7HuxoqDFcBMl2lRXsBOZjJA"/>
+        tools:targetApi="31" >
         <activity
-            android:name=".RecipesDetails"
-            android:exported="false">
+            android:name=".newUserActivity"
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
-                android:value=""
-                />
+                android:value="" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCHINoKMDnH7HuxoqDFcBMl2lRXsBOZjJA" />
+
+        <activity
+            android:name=".RecipesDetails"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
         <activity
             android:name=".MainActivity"
@@ -32,7 +40,7 @@
             android:label="@string/title_activity_main" />
         <activity
             android:name=".welcomeActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
