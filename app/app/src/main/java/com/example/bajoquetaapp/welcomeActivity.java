@@ -24,6 +24,7 @@ private static final int SPLASH_TIME_OUT = 1500;
                 i = new Intent(welcomeActivity.this, authActivity.class);
             }else {
                 i = new Intent(welcomeActivity.this, MainActivity.class);
+                i.putExtra("user", currentUser);
             }
             startActivity(i);
             finish();

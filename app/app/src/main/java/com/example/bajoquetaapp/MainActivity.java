@@ -1,10 +1,13 @@
 package com.example.bajoquetaapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -14,6 +17,9 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.bajoquetaapp.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        userVerify();
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -36,6 +42,16 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+    }
+
+    private void userVerify() {
+        FirebaseUser user = (FirebaseUser) getIntent().getExtras().get("user");
+        if (!user.isEmailVerified()) {
+            user.sendEmailVerification();
+            Toast.makeText(MainActivity.this, "Para acceder verifique su cuenta.",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), authActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void rodar(View view){
