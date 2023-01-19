@@ -1,8 +1,5 @@
 package com.example.bajoquetaapp;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 public class recipesData {
     private String descripcion;
     private String nombre;

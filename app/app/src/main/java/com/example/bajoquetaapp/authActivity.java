@@ -4,29 +4,27 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Objects;
 
 public class authActivity extends AppCompatActivity {
 
@@ -156,6 +154,13 @@ public class authActivity extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d("signInWithCredential", "signInWithCredential:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
+                                    //Boolean taskComplete = task.getResult().getAdditionalUserInfo().isNewUser();
+                                    if (Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser()) {
+                                        if (user != null) {
+                                            userData newUser = new userData(user.getUid(), user.getDisplayName(), user.getEmail(), false);
+                                            FirebaseFirestore.getInstance().collection("users").document(user.getUid()).set(newUser);
+                                        }
+                                    }
                                     updateUI(user);
                                 } else {
                                     // If sign in fails, display a message to the user.

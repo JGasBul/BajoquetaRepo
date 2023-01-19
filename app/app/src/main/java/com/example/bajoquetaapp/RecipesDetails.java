@@ -1,14 +1,13 @@
 package com.example.bajoquetaapp;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 
@@ -45,7 +44,7 @@ public class RecipesDetails extends AppCompatActivity {
         //---------------------------------------------------------
 
         nombreReceta.setText(nombre);
-        nombreReceta.setPadding(6,6,20,6);
+        nombreReceta.setPadding(6, 6, 20, 6);
 
         barraHidratos.setProgress(Integer.parseInt(hidratos));
         barraProteinas.setProgress(Integer.parseInt(proteinas));
@@ -65,6 +64,6 @@ public class RecipesDetails extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

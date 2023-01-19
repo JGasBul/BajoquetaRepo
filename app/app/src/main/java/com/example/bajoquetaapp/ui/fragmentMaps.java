@@ -1,7 +1,5 @@
 package com.example.bajoquetaapp.ui;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -17,21 +15,16 @@ import androidx.fragment.app.Fragment;
 
 import com.example.bajoquetaapp.R;
 import com.example.bajoquetaapp.databinding.FragmentMapsBinding;
-import com.google.android.gms.internal.location.zzau;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-
-import java.util.Objects;
-import java.util.concurrent.Executor;
 
 public class fragmentMaps extends Fragment implements OnMapReadyCallback {
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
@@ -52,9 +45,11 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
         View view = binding.getRoot();
 
         // Initialize map fragment
-        mapFragment=(SupportMapFragment)
+        mapFragment = (SupportMapFragment)
                 getChildFragmentManager().findFragmentById(R.id.google_map);
-        mapFragment.getMapAsync(this);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
 
@@ -91,7 +86,7 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onMapReady(GoogleMap map) {
+    public void onMapReady(@NonNull GoogleMap map) {
         this.map = map;
 
         LatLng cafeteria_gandia = new LatLng(38.9958384003, -0.16545744680482716);
@@ -105,6 +100,7 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
     }
+
     private void getLocationPermission() {
         /*
          * Request location permission, so that we can get the location of the
@@ -121,6 +117,7 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
                     PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
@@ -153,7 +150,7 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
                 lastKnownLocation = null;
                 getLocationPermission();
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -187,7 +184,7 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
                     }
                 });
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage(), e);
         }
     }

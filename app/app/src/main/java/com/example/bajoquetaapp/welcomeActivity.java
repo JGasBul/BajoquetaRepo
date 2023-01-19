@@ -10,8 +10,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class welcomeActivity extends AppCompatActivity {
-private static final int SPLASH_TIME_OUT = 1500;
+    private static final int SPLASH_TIME_OUT = 1500;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,12 +23,12 @@ private static final int SPLASH_TIME_OUT = 1500;
             Intent i;
             if (currentUser == null) {
                 i = new Intent(welcomeActivity.this, authActivity.class);
-            }else {
+            } else {
                 i = new Intent(welcomeActivity.this, MainActivity.class);
                 i.putExtra("user", currentUser);
             }
             startActivity(i);
             finish();
-        },SPLASH_TIME_OUT);
+        }, SPLASH_TIME_OUT);
     }
 }
