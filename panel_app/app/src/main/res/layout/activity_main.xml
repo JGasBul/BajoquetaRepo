@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Hac"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
 
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
@@ -43,7 +44,6 @@
         android:elevation="40dp"
         android:fontFamily="@font/montserrat_semibold"
         android:gravity="center"
-        android:onClick="published"
         android:paddingLeft="30dp"
         android:paddingRight="15dp"
         android:text="No Data"
@@ -53,6 +53,7 @@
         app:layout_constraintBottom_toTopOf="@+id/FoodCont"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="1.0"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
     <ImageView
@@ -89,14 +90,27 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/shape_all_rounded"
         android:elevation="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/FoodCont"
+        app:layout_constraintBottom_toBottomOf="@+id/subText"
         app:layout_constraintEnd_toStartOf="@+id/textView8"
         app:layout_constraintStart_toEndOf="@+id/subText"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/shape_all_rounded" />
+
+    <ImageView
+
+        android:id="@+id/foodCont4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/shape_all_rounded"
+        android:elevation="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/foodCont"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
         app:srcCompat="@drawable/shape_all_rounded" />
 
     <ImageView
@@ -291,15 +305,16 @@
 
     <TextView
 
-        android:id="@+id/textView4"
+        android:id="@+id/output"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:elevation="40dp"
         android:fontFamily="@font/montserrat_semibold"
-        android:text="TOMATE"
+        android:text="Escanea algo"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="@+id/FoodCont"
-        app:layout_constraintEnd_toEndOf="@+id/FoodCont"
+        app:layout_constraintEnd_toEndOf="@+id/foto"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -337,13 +352,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/foto"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:elevation="40dp"
         android:onClick="lejos"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/output"
         app:layout_constraintEnd_toEndOf="@+id/FoodCont"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/FoodCont"
@@ -423,13 +438,13 @@
         app:srcCompat="@drawable/demo_salad_2" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/AI"
         android:layout_width="61dp"
         android:layout_height="57dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:elevation="40dp"
-        android:onClick="disconn"
+        android:onClick="published"
         app:layout_constraintEnd_toEndOf="@+id/FoodCont"
         app:layout_constraintTop_toTopOf="@+id/FoodCont"
         app:srcCompat="@drawable/ai" />
@@ -450,6 +465,25 @@
         app:layout_constraintEnd_toEndOf="@+id/foodCont2"
         app:layout_constraintStart_toStartOf="@+id/foodCont2"
         app:layout_constraintTop_toTopOf="@+id/foodCont2" />
+
+    <TextView
+        android:id="@+id/led"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="40dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:gravity="center"
+        android:onClick="setLed"
+        android:text="LED"
+        android:textAlignment="center"
+        android:textColor="#353535"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/foodCont4"
+        app:layout_constraintEnd_toEndOf="@+id/foodCont4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/foodCont4"
+        app:layout_constraintTop_toTopOf="@+id/foodCont4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/temp"
@@ -472,5 +506,14 @@
         app:layout_constraintEnd_toEndOf="@+id/foodCont2"
         app:layout_constraintTop_toTopOf="@+id/foodCont2"
         app:srcCompat="@drawable/humidity" />
+
+    <ImageView
+        android:id="@+id/HacerFoto"
+        android:layout_width="127dp"
+        android:layout_height="87dp"
+        android:elevation="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/FoodCont"
+        app:layout_constraintEnd_toEndOf="@+id/foto"
+        app:srcCompat="@drawable/camara_fotografica" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
