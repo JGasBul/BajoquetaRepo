@@ -18,14 +18,13 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 public class recipesAdapter extends FirestoreRecyclerAdapter<recipesData, recipesAdapter.RecipesViewHolder> {
 
     private final Context context;
-    protected View.OnClickListener onClickListener;
 
     public recipesAdapter(Context context, @NonNull FirestoreRecyclerOptions<recipesData> options) {
         super(options);
         this.context = context.getApplicationContext();
     }
 
-    public class RecipesViewHolder extends RecyclerView.ViewHolder {
+    public static class RecipesViewHolder extends RecyclerView.ViewHolder {
 
         public final ImageView imageView;
         public final TextView mtitle, mDescription;
@@ -42,7 +41,7 @@ public class recipesAdapter extends FirestoreRecyclerAdapter<recipesData, recipe
     @Override
     public RecipesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipes_row_item, parent, false);
-        return new recipesAdapter.RecipesViewHolder(view);
+        return new RecipesViewHolder(view);
     }
 
     @Override
@@ -50,29 +49,22 @@ public class recipesAdapter extends FirestoreRecyclerAdapter<recipesData, recipe
         holder.mtitle.setText(model.getNombre());
         holder.mDescription.setText(model.getDescripcion());
         Glide.with(context).load(model.getFoto()).into(holder.imageView);
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), RecipesDetails.class);
-                intent.putExtra("calorias",model.getCalorias());
-                intent.putExtra("description", model.getDescripcion());
-                intent.putExtra("foto",model.getFoto());
-                intent.putExtra("grasas",model.getGrasas());
-                intent.putExtra("hidratos",model.getHidratos());
-                intent.putExtra("ingredientes",model.getIngredientes());
-                intent.putExtra("name",model.getNombre());
-                intent.putExtra("persona",model.getPersonas());
-                intent.putExtra("proteinas",model.getProteinas());
-                intent.putExtra("tiempo",model.getTiempo());
-
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            }
+        holder.imageView.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), RecipesDetails.class);
+            intent.putExtra("calorias", model.getCalorias());
+            intent.putExtra("description", model.getDescripcion());
+            intent.putExtra("foto", model.getFoto());
+            intent.putExtra("grasas", model.getGrasas());
+            intent.putExtra("hidratos", model.getHidratos());
+            intent.putExtra("ingredientes", model.getIngredientes());
+            intent.putExtra("name", model.getNombre());
+            intent.putExtra("persona", model.getPersonas());
+            intent.putExtra("proteinas", model.getProteinas());
+            intent.putExtra("tiempo", model.getTiempo());
+            intent.putExtra("uuid", model.getUuid());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
         });
-    }
-
-    public void setOnItemClickListener(View.OnClickListener onClick) {
-        onClickListener = onClick;
     }
 }
 

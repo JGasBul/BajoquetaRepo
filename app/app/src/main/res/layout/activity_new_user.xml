@@ -31,7 +31,7 @@
         android:background="@drawable/customborder">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/newTil_correo"
+            android:id="@+id/newTil_name"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -40,6 +40,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/newName"
+                style="@style/Theme.BajoquetaApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:hint="Nombre de usuario"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/newTil_correo"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="?android:attr/actionBarSize"
+            android:transitionGroup="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newTil_name">
 
             <EditText
                 android:id="@+id/newCorreo"

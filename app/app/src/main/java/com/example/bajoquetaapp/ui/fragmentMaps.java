@@ -1,14 +1,19 @@
 package com.example.bajoquetaapp.ui;
 
-import static android.content.ContentValues.TAG;
+import static android.app.Activity.RESULT_OK;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -17,12 +22,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.bajoquetaapp.R;
 import com.example.bajoquetaapp.databinding.FragmentMapsBinding;
-import com.google.android.gms.internal.location.zzau;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -30,10 +33,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import java.util.Objects;
-import java.util.concurrent.Executor;
+import java.util.ArrayList;
+import java.util.List;
 
-public class fragmentMaps extends Fragment implements OnMapReadyCallback {
+public class fragmentMaps extends Fragment implements OnMapReadyCallback{
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private static final float DEFAULT_ZOOM = 15;
     private FragmentMapsBinding binding;
@@ -44,6 +47,13 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
     private Location lastKnownLocation;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LatLng defaultLocation = new LatLng(-33.8523341, 151.2106085);
+
+    public List<LatLng> listaSupermercados = new ArrayList<>();
+    public List<String> nombreListaSupermercados = new ArrayList<>();
+
+    //Asistente De Voz
+    String strSpeech2Text=null;
+    private static final int RECOGNIZE_SPEECH_ACTIVITY = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,35 +68,33 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
 
-/*
-        // Async map
-        supportMapFragment.getMapAsync(new OnMapReadyCallback() {
+        ImageButton boton_miUbicacion = (ImageButton) view.findViewById(R.id.imageButton_miUbicacion);
+        boton_miUbicacion.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onMapReady(GoogleMap googleMap) {
-                // When map is loaded
-                googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-                    @Override
-                    public void onMapClick(LatLng latLng) {
-                        // When clicked on map
-                        // Initialize marker options
-                        MarkerOptions markerOptions=new MarkerOptions();
-                        // Set position of marker
-                        markerOptions.position(latLng);
-                        // Set title of marker
-                        markerOptions.title(latLng.latitude+" : "+latLng.longitude);
-                        // Remove all marker
-                        googleMap.clear();
-                        // Animating to zoom the marker
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
-                        // Add marker on map
-                        googleMap.addMarker(markerOptions);
-                    }
-                });
+            public void onClick(View view) {
+                getDeviceLocation();
             }
         });
-*/
 
-        // Return view
+        ImageButton boton_microfono = (ImageButton) view.findViewById(R.id.img_btn_hablar);
+        boton_microfono.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentActionRecognizeSpeech = new Intent(
+                        RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                // Configura el Lenguaje (Español-México)
+                intentActionRecognizeSpeech.putExtra(
+                        RecognizerIntent.EXTRA_LANGUAGE_MODEL, "es-MX");
+                try {
+                    startActivityForResult(intentActionRecognizeSpeech,
+                            RECOGNIZE_SPEECH_ACTIVITY);
+                } catch (ActivityNotFoundException a) {
+                    Toast.makeText(getContext().getApplicationContext(),
+                            "Tú dispositivo no soporta el reconocimiento por voz",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         return view;
     }
 
@@ -94,10 +102,25 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap map) {
         this.map = map;
 
-        LatLng cafeteria_gandia = new LatLng(38.9958384003, -0.16545744680482716);
-        map.addMarker(new MarkerOptions()
-                .position(cafeteria_gandia)
-                .title("Cafeteria UPV Gandia"));
+        LatLng carrefour, mercadona, lidl;
+        listaSupermercados.add(
+                carrefour = new LatLng(38.9971, -0.1626)
+        );
+        nombreListaSupermercados.add("Carrefour");
+        listaSupermercados.add(
+                mercadona = new LatLng(38.9913, -0.1628)
+        );
+        nombreListaSupermercados.add("Mercadona");
+        listaSupermercados.add(
+                lidl = new LatLng(38.9685, -0.1714)
+        );
+        nombreListaSupermercados.add("Lidl");
+
+        for (int i=0;i<listaSupermercados.size();i++){
+            map.addMarker(new MarkerOptions()
+                    .position(listaSupermercados.get(i))
+                    .title(""+nombreListaSupermercados.get(i)));
+        }
 
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
@@ -106,11 +129,6 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
         getDeviceLocation();
     }
     private void getLocationPermission() {
-        /*
-         * Request location permission, so that we can get the location of the
-         * device. The result of the permission request is handled by a callback,
-         * onRequestPermissionsResult.
-         */
         if (ContextCompat.checkSelfPermission(this.requireActivity(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -138,7 +156,6 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
         updateLocationUI();
     }
 
-
     private void updateLocationUI() {
         if (map == null) {
             return;
@@ -159,10 +176,6 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
     }
 
     private void getDeviceLocation() {
-        /*
-         * Get the best and most recent location of the device, which may be null in rare
-         * cases when a location is not available.
-         */
         try {
             if (locationPermissionGranted) {
                 Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
@@ -192,5 +205,42 @@ public class fragmentMaps extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    //----------------------------------------------------------------------------------------------
+    //Asistente de voz
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case RECOGNIZE_SPEECH_ACTIVITY:
+                if (resultCode == RESULT_OK && null != data) {
+                    ArrayList<String> speech = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    strSpeech2Text = speech.get(0);
 
+                    moverCamara(strSpeech2Text);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    public void moverCamara(String lugar){
+        if (nombreListaSupermercados.contains(lugar)){
+            for (int i=0;i<nombreListaSupermercados.size();i++){
+                if (lugar.equals(nombreListaSupermercados.get(i))){
+                    map.moveCamera(CameraUpdateFactory
+                            .newLatLngZoom(listaSupermercados.get(i), DEFAULT_ZOOM));
+                }
+            }
+        }
+        else if(lugar.equals("mi ubicación")||lugar.equals("Mi ubicación")){
+            getDeviceLocation();
+        }
+        else{
+            Toast.makeText(getContext().getApplicationContext(),
+                    "El sitio que buscas no está en nuestra base de datos",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 }
+

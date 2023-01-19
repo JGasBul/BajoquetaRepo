@@ -2,7 +2,6 @@ package com.example.bajoquetaapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -17,9 +16,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.bajoquetaapp.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,16 +43,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void userVerify() {
-        FirebaseUser user = (FirebaseUser) getIntent().getExtras().get("user");
-        if (!user.isEmailVerified()) {
+        FirebaseUser user;
+        try {
+            user = (FirebaseUser) getIntent().getExtras().get("user");
+        } catch (Exception e) {
+            user = FirebaseAuth.getInstance().getCurrentUser();
+        }
+        if (user == null) {
+            Toast.makeText(MainActivity.this, "Ha habido un problema con su sesion. Vuelva a inciar sesion porfavor.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), authActivity.class);
+            startActivity(intent);
+        } else if (!user.isEmailVerified()) {
             user.sendEmailVerification();
-            Toast.makeText(MainActivity.this, "Para acceder verifique su cuenta.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Para acceder verifique su cuenta.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), authActivity.class);
             startActivity(intent);
         }
     }
 
-    public void rodar(View view){
+    public void rodar(View view) {
         ImageView spaceshipImage = findViewById(R.id.cara);
         Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.hyperspace_jump);
         spaceshipImage.startAnimation(hyperspaceJumpAnimation);
