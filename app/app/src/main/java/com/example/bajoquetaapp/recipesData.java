@@ -1,6 +1,7 @@
 package com.example.bajoquetaapp;
 
 public class recipesData {
+    private String uuid;
     private String descripcion;
     private String nombre;
     private String foto;
@@ -12,7 +13,8 @@ public class recipesData {
     private String tiempo;
     private String ingredientes;
 
-    public recipesData(String descripcion, String nombre, String foto, String calorias, String grasas, String hidratos, String personas, String proteinas, String tiempo, String ingredientes) {
+    public recipesData(String uuid, String descripcion, String nombre, String foto, String calorias, String grasas, String hidratos, String personas, String proteinas, String tiempo, String ingredientes) {
+        this.uuid = uuid;
         this.descripcion = descripcion;
         this.nombre = nombre;
         this.foto = foto;
@@ -108,10 +110,19 @@ public class recipesData {
         this.ingredientes = ingredientes;
     }
 
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
     @Override
     public String toString() {
         return "recipesData{" +
-                "descripcion='" + descripcion + '\'' +
+                "uuid='" + uuid + '\'' +
+                ", descripcion='" + descripcion + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", foto='" + foto + '\'' +
                 ", calorias='" + calorias + '\'' +

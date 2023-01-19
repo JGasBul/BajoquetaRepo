@@ -157,7 +157,7 @@ public class authActivity extends AppCompatActivity {
                                     //Boolean taskComplete = task.getResult().getAdditionalUserInfo().isNewUser();
                                     if (Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser()) {
                                         if (user != null) {
-                                            userData newUser = new userData(user.getUid(), user.getDisplayName(), user.getEmail(), false);
+                                            userData newUser = new userData(user.getUid(), user.getDisplayName(), user.getEmail(), false, null);
                                             FirebaseFirestore.getInstance().collection("users").document(user.getUid()).set(newUser);
                                         }
                                     }

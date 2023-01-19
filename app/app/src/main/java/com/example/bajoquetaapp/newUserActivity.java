@@ -54,7 +54,7 @@ public class newUserActivity extends AppCompatActivity {
                                                 }
                                             });
                                     if (Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser()) {
-                                        userData newUser = new userData(user.getUid(), name.getText().toString(), user.getEmail(), false);
+                                        userData newUser = new userData(user.getUid(), name.getText().toString(), user.getEmail(), false, null);
                                         FirebaseFirestore.getInstance().collection("users").document(user.getUid()).set(newUser);
                                     }
                                 }

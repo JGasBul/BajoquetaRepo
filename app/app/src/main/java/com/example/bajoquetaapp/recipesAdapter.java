@@ -61,7 +61,7 @@ public class recipesAdapter extends FirestoreRecyclerAdapter<recipesData, recipe
             intent.putExtra("persona", model.getPersonas());
             intent.putExtra("proteinas", model.getProteinas());
             intent.putExtra("tiempo", model.getTiempo());
-
+            intent.putExtra("uuid", model.getUuid());
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         });

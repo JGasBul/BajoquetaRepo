@@ -1,17 +1,21 @@
 package com.example.bajoquetaapp;
 
+import java.lang.reflect.Array;
+
 public class userData {
     private String userUUID, name, email;
     private Boolean led;
+    private Array favRecipes;
 
     public userData() {
     }
 
-    public userData(String userUUID, String name, String email, Boolean led) {
+    public userData(String userUUID, String name, String email, Boolean led, Array favRecipes) {
         this.userUUID = userUUID;
         this.name = name;
         this.email = email;
         this.led = led;
+        this.favRecipes = favRecipes;
     }
 
     public String getUserUUID() {
@@ -46,6 +50,14 @@ public class userData {
         this.led = led;
     }
 
+    public Array getFavRecipes() {
+        return favRecipes;
+    }
+
+    public void setFavRecipes(Array favRecipes) {
+        this.favRecipes = favRecipes;
+    }
+
     @Override
     public String toString() {
         return "userData{" +
@@ -53,6 +65,7 @@ public class userData {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", led=" + led +
+                ", favRecipes=" + favRecipes +
                 '}';
     }
 }
