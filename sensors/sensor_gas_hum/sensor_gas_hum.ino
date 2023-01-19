@@ -33,7 +33,7 @@ AsyncUDP udp;
 const char * ssid = "Zaimobil";
 const char * wifi_password = "holaputa";
 // MQTT
-const char* mqtt_server = "192.168.146.53";  // IP of the MQTT broker
+const char* mqtt_server = "192.168.194.53";  // IP of the MQTT broker
 const char* temperature_topic = "home/mov/tab2";
 const char* mqtt_username = "pi"; // MQTT username
 const char* mqtt_password = "1234"; // MQTT password
@@ -94,6 +94,7 @@ void connect_MQTT(){
 void setup(){
   M5.begin(true, false, true);
   M5.Lcd.setTextSize(3);
+   M5.Speaker.mute();
   M5.Lcd.printf("Calibrando...");
 Serial.begin(9600);    //Inicializa Serial a 9600 baudios
  dht.begin();
@@ -135,16 +136,15 @@ void loop()
   Serial.println("C");  
    
     M5.Lcd.setCursor(0, 30);
-    if (lecturaMQ(MQ1)>2350.00){
+    if (lecturaMQ(MQ1)>2500.00){
        M5.Lcd.setCursor(0, 30);
        M5.Lcd.fillRect (0, 100, 300, 150, RED); 
        M5.Lcd.print ("Peligro gas detectado");
-       for(int deg = 0; deg < 360; deg = deg + 1){
-        dacWrite(25,int(128 + 127 * (sin (deg * PI * 4/ 180))));
-       }
+       M5.Speaker.tone(2000, 1000);
       
     }
-    else if(lecturaMQ(MQ1)<2350.00){
+    else if(lecturaMQ(MQ1)<2500.00){
+       M5.Speaker.mute();
        M5.Lcd.setCursor(0, 30);
        M5.Lcd.fillRect (0, 100, 300, 150, BLACK); 
        M5.Lcd.print ("Ningun gas  detectado");
