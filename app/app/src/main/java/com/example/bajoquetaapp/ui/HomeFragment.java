@@ -1,54 +1,68 @@
 package com.example.bajoquetaapp.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bajoquetaapp.R;
-import com.example.bajoquetaapp.authActivity;
 import com.example.bajoquetaapp.databinding.FragmentHomeBinding;
-
-import com.firebase.ui.auth.AuthUI;
+import com.example.bajoquetaapp.recipesAdapter;
+import com.example.bajoquetaapp.recipesData;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+import java.util.Objects;
+
+public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    TextView welcome, datos;
-    FirebaseUser currentUser;
-    Button logOut;
+    private recipesAdapter adapter;
+    private ImageView switchLight;
+    private boolean stateLight;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        /*
-        welcome = binding.textView;
-        //logOut = binding.logOutButton;
-        welcome.setText(String.format("%s %s", getString(R.string.bienvenido), currentUser.getDisplayName()));
-
-        datos = binding.infoUser;
-        datos.setText(String.format("Sus datos son: \nNombre: %s\nCorreo: %s\nProveedor: %s\nUID: %s"
-                , currentUser.getDisplayName(), currentUser.getEmail(), currentUser.getProviderData(), currentUser.getUid()));
-
-        logOut.setOnClickListener(view -> AuthUI.getInstance()
-                .signOut(root.getContext())
-                .addOnCompleteListener(task -> {
-                    // user is now signed out
-                    startActivity(new Intent(root.getContext(), authActivity.class));
-                    getActivity().finish();
-                }));
-        */
+        switchStateLight();
+        constructRV(root);
         return root;
+    }
+
+    private void switchStateLight() {
+        switchLight = binding.switchLight;
+        stateLight = false;
+        switchLight.setOnClickListener(view -> {
+            if (!stateLight) {
+                switchLight.setImageResource(R.drawable.bulbon);
+                stateLight = true;
+                // Prueba conceptual, cuando se pueda iniciar sesion en la app de la bascula podremos aislar a los usuarios el led en la base de datos.
+            } else {
+                switchLight.setImageResource(R.drawable.bulboff);
+                stateLight = false;
+                // Prueba conceptual, cuando se pueda iniciar sesion en la app de la bascula podremos aislar a los usuarios el led en la base de datos.
+            }
+            FirebaseFirestore.getInstance().collection("LED").document("led").update("led", stateLight);
+            FirebaseFirestore.getInstance().collection("users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).update("led", stateLight);
+        });
+    }
+
+    private void constructRV(@NonNull View root) {
+        RecyclerView recipesView = binding.rvHome;
+        Query query = FirebaseFirestore.getInstance().collection("recipes").orderBy("nombre", Query.Direction.DESCENDING).limit(4);
+        FirestoreRecyclerOptions<recipesData> options = new FirestoreRecyclerOptions.Builder<recipesData>().setQuery(query, recipesData.class).build();
+        adapter = new recipesAdapter(root.getContext(), options);
+        recipesView.setAdapter(adapter);
+        recipesView.setLayoutManager(new LinearLayoutManager(root.getContext()));
     }
 
     @Override
@@ -58,7 +72,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View view) {
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".newUserActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="207dp"
+        android:contentDescription="@string/logo_smartcook"
+        app:srcCompat="@mipmap/logo_smartcook_foreground" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginStart="75dp"
+        android:layout_marginBottom="5dp"
+        android:text="Nuevo usuario"
+        android:textSize="20dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_vertical"
+        android:background="@drawable/customborder">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/newTil_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="?android:attr/actionBarSize"
+            android:transitionGroup="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/newName"
+                style="@style/Theme.BajoquetaApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:hint="Nombre de usuario"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/newTil_correo"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="?android:attr/actionBarSize"
+            android:transitionGroup="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newTil_name">
+
+            <EditText
+                android:id="@+id/newCorreo"
+                style="@style/Theme.BajoquetaApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:hint="Correo electrónico"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/newTil_contraseña"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="?android:attr/actionBarSize"
+            android:transitionGroup="true"
+            app:layout_constraintEnd_toEndOf="@+id/newTil_correo"
+            app:layout_constraintStart_toStartOf="@+id/newTil_correo"
+            app:layout_constraintTop_toBottomOf="@+id/newTil_correo">
+
+            <EditText
+                android:id="@+id/newContraseña"
+                style="@style/Theme.BajoquetaApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:hint="Contraseña"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:textSize="14sp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_checkContraseña"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="?android:attr/actionBarSize"
+            android:transitionGroup="true"
+            app:layout_constraintEnd_toEndOf="@+id/newTil_contraseña"
+            app:layout_constraintStart_toStartOf="@+id/newTil_contraseña"
+            app:layout_constraintTop_toBottomOf="@+id/newTil_contraseña">
+
+            <EditText
+                android:id="@+id/checkContraseña"
+                style="@style/Theme.BajoquetaApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:hint="Confirmación"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:textSize="14sp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/newUser"
+            style="@style/Theme.BajoquetaApp"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#72A874"
+            android:text="Registrarse"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/til_checkContraseña"
+            app:layout_constraintStart_toStartOf="@+id/til_checkContraseña"
+            app:layout_constraintTop_toBottomOf="@+id/til_checkContraseña" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

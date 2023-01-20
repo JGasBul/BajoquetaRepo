@@ -8,12 +8,19 @@
 
     <item
         android:id="@+id/navigation_user"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/fui_ic_anonymous_white_24dp"
         android:title="User" />
 
     <item
         android:id="@+id/navigation_recipes"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="Recipes" />
+
+    <item
+        android:id="@+id/navigation_maps"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="Mapas" />
 
 </menu>

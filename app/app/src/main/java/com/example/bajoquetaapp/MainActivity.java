@@ -1,13 +1,12 @@
 package com.example.bajoquetaapp;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -16,6 +15,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.bajoquetaapp.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        userVerify();
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_user, R.id.navigation_recipes)
+                R.id.navigation_home, R.id.navigation_user, R.id.navigation_recipes, R.id.navigation_maps)
                 .build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
@@ -40,11 +42,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void rodar(View view){
+    private void userVerify() {
+        FirebaseUser user;
+        try {
+            user = (FirebaseUser) getIntent().getExtras().get("user");
+        } catch (Exception e) {
+            user = FirebaseAuth.getInstance().getCurrentUser();
+        }
+        if (user == null) {
+            Toast.makeText(MainActivity.this, "Ha habido un problema con su sesion. Vuelva a inciar sesion porfavor.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), authActivity.class);
+            startActivity(intent);
+        } else if (!user.isEmailVerified()) {
+            user.sendEmailVerification();
+            Toast.makeText(MainActivity.this, "Para acceder verifique su cuenta.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), authActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    public void rodar(View view) {
         ImageView spaceshipImage = findViewById(R.id.cara);
         Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.hyperspace_jump);
         spaceshipImage.startAnimation(hyperspaceJumpAnimation);
 
     }
-
 }

@@ -1,14 +1,498 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.HomeFragment">
-    <include
-        layout="@layout/content_scrolling"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="115dp"
+            android:layout_height="92dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.41"
+            app:srcCompat="@mipmap/logo_smartcook_foreground" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="136dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Bienvenido"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/montserrat"
+            android:text="¿Que te apetece cocinar hoy?"
+            android:textColor="#252525"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ImageView
+            android:id="@+id/switchLight"
+            android:layout_width="60dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/bulboff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/container1"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/shape_all_rounded"
+            android:elevation="30dp"
+            android:textSize="8sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/tu_resumen"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/shape_1_rounded"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_vertical"
+            android:text="Tu resumen"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/container1"
+            tools:ignore="RtlCompat" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="15dp"
+            android:elevation="35dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintEnd_toEndOf="@+id/container1"
+            app:layout_constraintTop_toTopOf="@+id/container1"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/progress_bar" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="90dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Grasas"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/container1"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Calorías ingeridas hoy"
+            android:textColor="#000000"
+            app:layout_constraintStart_toStartOf="@+id/container1"
+            app:layout_constraintTop_toBottomOf="@+id/tu_resumen" />
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:max="100"
+            android:progress="75"
+            android:progressTint="#5CBDFA"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="@+id/progressBar4"
+            app:layout_constraintStart_toStartOf="@+id/progressBar4"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <ProgressBar
+            android:id="@+id/progressBar4"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:elevation="35dp"
+            android:max="100"
+            android:progress="75"
+            android:progressTint="#5CBDFA"
+            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+        <ProgressBar
+            android:id="@+id/progressBar5"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:max="100"
+            android:progress="75"
+            android:progressTint="#5CBDFA"
+            app:layout_constraintBottom_toBottomOf="@+id/textView11"
+            app:layout_constraintEnd_toEndOf="@+id/progressBar6"
+            app:layout_constraintStart_toStartOf="@+id/progressBar6"
+            app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+        <ProgressBar
+            android:id="@+id/progressBar6"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:max="100"
+            android:progress="75"
+            android:progressTint="#5CBDFA"
+            app:layout_constraintBottom_toBottomOf="@+id/textView10"
+            app:layout_constraintEnd_toEndOf="@+id/progressBar3"
+            app:layout_constraintStart_toStartOf="@+id/progressBar3"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="Almuerzo"
+            app:layout_constraintStart_toStartOf="@+id/container1"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="Comida"
+            app:layout_constraintEnd_toEndOf="@+id/textView8"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView8"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="Cena"
+            app:layout_constraintEnd_toEndOf="@+id/textView9"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="Aperitivo"
+            app:layout_constraintEnd_toEndOf="@+id/textView10"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView10"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="58dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="130kcal"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar4"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/progressBar4"
+            app:layout_constraintTop_toTopOf="@+id/progressBar4" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="58dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="130kcal"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar3"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/progressBar3"
+            app:layout_constraintTop_toTopOf="@+id/progressBar3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="58dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="130kcal"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar6"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/progressBar6"
+            app:layout_constraintTop_toTopOf="@+id/progressBar6"
+            app:layout_constraintVertical_bias="0.333" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="58dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="130kcal"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar5"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/progressBar5"
+            app:layout_constraintTop_toTopOf="@+id/progressBar5"
+            app:layout_constraintVertical_bias="0.666" />
+
+        <TextView
+            android:id="@+id/hidratosTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Hidratos"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/textView17"
+            app:layout_constraintStart_toStartOf="@+id/container1"
+            app:layout_constraintTop_toTopOf="@+id/textView17" />
+
+        <ProgressBar
+            android:id="@+id/barraGrasas"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:max="100"
+            android:progress="30"
+            android:progressTint="#F7DE42"
+            app:layout_constraintEnd_toEndOf="@+id/textView5"
+            app:layout_constraintStart_toStartOf="@+id/textView5"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Proteínas"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/textView5"
+            app:layout_constraintEnd_toStartOf="@+id/textView5"
+            app:layout_constraintStart_toEndOf="@+id/hidratosTextView"
+            app:layout_constraintTop_toTopOf="@+id/textView5"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ProgressBar
+            android:id="@+id/barraProteinas"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:max="100"
+            android:progress="54"
+            android:progressTint="#E78686"
+            app:layout_constraintEnd_toEndOf="@+id/textView17"
+            app:layout_constraintStart_toStartOf="@+id/textView17"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+        <ProgressBar
+            android:id="@+id/barraHidratos"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:max="100"
+            android:progress="75"
+            android:progressTint="#5EACDC"
+            app:layout_constraintEnd_toEndOf="@+id/hidratosTextView"
+            app:layout_constraintStart_toStartOf="@+id/hidratosTextView"
+            app:layout_constraintTop_toBottomOf="@+id/hidratosTextView" />
+
+        <TextView
+            android:id="@+id/hidratosPorcentaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="52g / 125g"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/barraHidratos"
+            app:layout_constraintStart_toStartOf="@+id/barraHidratos"
+            app:layout_constraintTop_toBottomOf="@+id/barraHidratos" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="54g / 100g"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/barraProteinas"
+            app:layout_constraintStart_toStartOf="@+id/barraProteinas"
+            app:layout_constraintTop_toBottomOf="@+id/barraProteinas" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="20g / 125g"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/barraGrasas"
+            app:layout_constraintStart_toStartOf="@+id/barraGrasas"
+            app:layout_constraintTop_toBottomOf="@+id/barraGrasas" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="196dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="15dp"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat_italic"
+            android:text="¡ Lo estás haciendo genial !"
+            android:textColor="#000000"
+            app:layout_constraintStart_toStartOf="@+id/barraHidratos"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+        <ImageView
+            android:id="@+id/cara"
+            android:layout_width="36dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="20dp"
+            android:elevation="35dp"
+            android:onClick="rodar"
+            app:layout_constraintEnd_toEndOf="@+id/barraGrasas"
+            app:layout_constraintHorizontal_bias="0.166"
+            app:layout_constraintStart_toEndOf="@+id/textView21"
+            app:layout_constraintTop_toBottomOf="@+id/textView20"
+            app:srcCompat="@drawable/sonriendo"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container1"
+            app:layout_constraintVertical_bias="1.0" >
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/container3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/shape_all_rounded"
+            android:elevation="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container1" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="240dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/shape_1_rounded"
+            android:elevation="35dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_vertical"
+            android:text="Recetas destacadas del día"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/container3"
+            tools:ignore="RtlCompat" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHome"
+            android:layout_width="390dp"
+            android:layout_height="512dp"
+            android:background="@drawable/shape_all_rounded"
+            android:elevation="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/container3"
+            app:layout_constraintEnd_toEndOf="@+id/container3"
+            app:layout_constraintStart_toStartOf="@+id/container3"
+            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
